@@ -1,0 +1,6 @@
+myserver ansible_user=hduser ansible_ssh_private_key_file=/home/hduser/Downloads/id_rsa.pem.txt
+myclient ansible_user=hduser ansible_ssh_private_key_file=/home/hduser/Downloads/id_rsa.pem.txt
+192.168.122.214 ansible_user=root ansible_ssh_private_key_file=/home/hduser/Downloads/id_rsa.pem.txt
+192.168.122.217 ansible_user=root ansible_ssh_private_key_file=/home/hduser/Downloads/id_rsa.pem.txt
+192.168.122.50 ansible_user=root ansible_ssh_private_key_file=/home/hduser/Downloads/id_rsa.pem.txt
+192.168.122.200 ansible_user=root ansible_ssh_private_key_file=/home/hduser/Downloads/id_rsa.pem.txt

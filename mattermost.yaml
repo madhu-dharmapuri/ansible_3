@@ -1,0 +1,69 @@
+---
+ - hosts: all
+  # gather_facts: True
+  # remote_user: hduser
+   become: yes
+  # become_user: root
+  # become_method: sudo
+   tasks:
+    # - name: "create users in the target machines"
+    #   user: 
+    #      name: "{{ item }}"  
+    #      update_password: on_create
+    #      state: present
+    #      password: "mdm123"
+    #   with_items:
+    #          - hduser
+    #          - madhu
+    #          - prasanna
+
+     #  when: 
+     #    - ansible_os == 'CentOS'
+
+   #  - name: "Update system packages"
+   #   raw: yum check-update && yum install python      
+           
+     - name: "Install Nginx {{ item }}"
+       package: name={{ item.name }} state={{ item.state }}
+       with_items:
+    #       - java-1.8.0-openjdk
+    #       - curl
+          - { name: 'java-1.8.0-openjdk' , state: 'present' }
+    #      - { name: 'nano'  , state: 'present' }
+          - { name: 'curl'  , state: 'present' }
+      
+     - name: Create Directory in server
+       file: 
+        path: /var/www/mywebsite 
+        state: directory 
+        mode: 0655  
+      
+     - name: copy java files 
+       copy:
+          src: "{{ item.src }}"
+          dest: "{{ item.dest }}"
+          owner: root
+          group: root
+          mode: 0655
+       with_items:
+          - src: "/etc/java/font.properties"
+            dest: "/home/hduser"    
+          - src: "/etc/java/java.conf"
+            dest: "/home/hduser" 
+
+     - name: check if java conf exists 
+       stat: 
+         path: "/home/hduser/java.conf"
+       register: default_conf
+
+     - name: Remove java if exists
+       file:
+          path: /home/hduser/java.conf
+          state: absent
+       when: default_conf.stat.exists
+
+     - name: Start sshd services 
+       service:
+          name: sshd
+          state: restarted
+          enabled: yes

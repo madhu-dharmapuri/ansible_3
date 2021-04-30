@@ -14,6 +14,10 @@ pipeline {
       stage ("test") {
           steps {
           echo 'Test the file'
+                script {
+                def testing = 2 + 3 > 6 ? 'No' : 'Yes' 
+                      echo testing
+                }
           }
       
       }

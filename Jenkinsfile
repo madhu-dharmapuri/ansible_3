@@ -31,7 +31,7 @@ pipeline {
           steps {
           echo 'Test the file'
                 script {
-                        def test = 2 + 2 > 6 ? 'Wrong test' : 'Right test done'
+                        def test = 2 + 2 > 6 ? 'Wrong test' : 'Right test  done'
                       echo test
                 }
                 

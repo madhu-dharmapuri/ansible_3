@@ -16,6 +16,7 @@ pipeline {
           echo 'Test the file'
                 script {
                         def test = 2 + 2 > 6 ? 'Wrong' : 'Right'
+                      echo test
                 }
                 
           }
@@ -26,6 +27,10 @@ pipeline {
       stage ("deploy") {
           steps {
           echo 'Deploy the file'
+                script {
+                        def deploy = 2 + 2 > 6 ? 'Wrong' : 'Right'
+                        echo deploy
+                }
           }
       
       }

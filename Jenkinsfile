@@ -10,7 +10,7 @@ pipeline {
                   script {
                         def build = 2 + 2 < 6 ? 'Wrong build' : 'Right build'
                       echo build
-                
+                  }
           }
      
       }

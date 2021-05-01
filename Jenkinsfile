@@ -14,8 +14,8 @@ pipeline {
       stage ("test") {
           steps {
           echo 'Test the file'
-                sript {
-                def test = 2 + 2 > 6 ? 'Wrong' : 'Right'
+                script {
+                        def test = 2 + 2 > 6 ? 'Wrong' : 'Right'
                 }
                 
           }

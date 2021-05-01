@@ -15,7 +15,7 @@ pipeline {
      
       }
       
-      stage ("test") {
+      stage ("test 1") {
           steps {
           echo 'Test the file'
                 script {
@@ -27,6 +27,19 @@ pipeline {
       
       }
       
+      stage ("test 2 ") {
+          steps {
+          echo 'Test the file'
+                script {
+                        def test = 2 + 2 > 6 ? 'Wrong test' : 'Right test done'
+                      echo test
+                }
+                
+          }
+      
+      }
+
+            
       
       stage ("deploy") {
           steps {

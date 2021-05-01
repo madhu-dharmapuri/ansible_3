@@ -7,6 +7,10 @@ pipeline {
       stage ("build") {
           steps {
           echo 'Build the file'
+                  script {
+                        def build = 2 + 2 < 6 ? 'Wrong build' : 'Right build'
+                      echo build
+                
           }
      
       }
@@ -15,7 +19,7 @@ pipeline {
           steps {
           echo 'Test the file'
                 script {
-                        def test = 2 + 2 > 6 ? 'Wrong' : 'Right'
+                        def test = 2 + 2 > 6 ? 'Wrong test' : 'Right test'
                       echo test
                 }
                 
@@ -28,7 +32,7 @@ pipeline {
           steps {
           echo 'Deploy the file'
                 script {
-                        def deploy = 2 + 2 > 6 ? 'Wrong' : 'Right'
+                        def deploy = 2 + 2 > 6 ? 'Wrong deploy' : 'Right deploy'
                         echo deploy
                 }
           }

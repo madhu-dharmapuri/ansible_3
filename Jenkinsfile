@@ -8,7 +8,7 @@ pipeline {
           steps {
           echo 'Build the file'
                   script {
-                        def build = 2 + 2 < 6 ? 'Wrong build' : 'Right build done well'
+                        def build = 2 + 2 < 6 ? 'Wrong build' : 'Right build done well '
                       echo build
                   }
           }

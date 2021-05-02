@@ -4,39 +4,32 @@ pipeline {
       
       stages {
       
-      stage ("build") {
-          steps {
-          echo 'Build the file'
-                  script {
-                        def build = 2 + 2 < 6 ? 'Wrong build' : 'Right build done well'
-                      echo build
-                  }
+      stage ("pull from git for sonar") {
+        
+                steps {
+                  git url "https://github.com/madhu-dharmapuri/ansible_3.git"
+
+                }
           }
      
       }
       
-      stage ("test 1") {
-          steps {
-          echo 'Test the file'
-                script {
-                        def test = 2 + 2 > 6 ? 'Wrong test' : 'Right test done'
-                      echo test
+      stage ("Sonar test analysis") {
+             echo 'Sonar Test the file'
+                steps { 
+                      withSonarQubeEnv('sonarqube') {
+                              sh "./gradlew sonarqube"
+                      }
                 }
-                
-          }
       
       }
+            
       
-      stage ("test 2 ") {
+      stage ("Sonar qualitygate test") {
           steps {
-          echo 'Test the file'
-                script {
-                        def test = 2 + 2 > 6 ? 'Wrong test' : 'Right test done'
-                      echo test
+          echo 'SOnar qualitygate test'
+                 waitForQualityGate abortpipeline: true
                 }
-                
-          }
-      
       }
 
             

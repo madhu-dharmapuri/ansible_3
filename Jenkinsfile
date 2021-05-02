@@ -12,7 +12,7 @@ pipeline {
                 }
           }
      
-      }
+      
       
       stage ("Sonar test analysis") {
              echo 'Sonar Test the file'

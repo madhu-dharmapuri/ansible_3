@@ -18,10 +18,10 @@ pipeline {
              echo 'Sonar Test the file'
                 steps { 
                       withSonarQubeEnv('sonarqube') {
-                              sh "./gradlew sonarqube \
-                              -Dsonar.projectKey=sonarqube-1 \
-                              -Dsonar.host.url=http://192.168.122.1:9000 \
-                              -Dsonar.login=4b192d4f3f528bedac3352df66dace38bfafd1ad"
+                              sh "mvn sonar:sonar \
+                                    -Dsonar.projectKey=sonarqube-1 \
+                                    -Dsonar.host.url=http://192.168.122.1:9000 \
+                                    -Dsonar.login=4b192d4f3f528bedac3352df66dace38bfafd1ad"
                       }
                 }
       
